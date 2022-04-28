@@ -76,8 +76,9 @@ A chess tracker app that allows a user to look into their chess statistics over 
 
 
 ## Wireframes
-![Add picture of your hand sketched wireframes in this section]
+[Add picture of your hand sketched wireframes in this section]
 <img src="Wireframe_codePath.pdf" width=600>
+![wireFrame]("Wireframe_codePath.pdf")
 
 ### [BONUS] Digital Wireframes & Mockups
 
