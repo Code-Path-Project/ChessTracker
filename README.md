@@ -13,7 +13,7 @@ Group Members: Chiseng Wong, Yiyi Huang, Eric Chen, Abijit Jayachandran
 
 ## Overview
 ### Description
-[Description of your app]
+A chess tracker app that allows a user to look into their chess statistics over time compared to their friends' and other users. 
 
 ### App Evaluation
 
