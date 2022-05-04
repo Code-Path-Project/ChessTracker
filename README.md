@@ -123,7 +123,7 @@ Model: Game
   - (Read/GET) Query all players in friendList array
 
 #### Code Snippet for network requests 
-```
+```kotlin
 val client = AsyncHttpClient()
 client.get("https://api.chess.com/pub/{Endpoint}", object: JsonHttpResponseHandler() {
 override fun onFailure(
@@ -139,10 +139,10 @@ override fun onSuccess(statusCode: Int, headers: Headers?, json: JSON) {
 // use data
 }
 }
-```     
+```
 The general framework for each network call will follow the above format. However, we will have to change the API endpoint and the JSON data extraction based on what we need for that particular request. The idea for this framework was taken from our Flixster assignment. However, to make our friend list and log-in we need a different code snippet. 
 
-```
+```kotlin
 val query: ParseQuery<User> = ParseQuery.getQuery(Post::class.java)
 query.include(User.playerID)
 ```
