@@ -76,7 +76,7 @@ A chess tracker app that allows a user to look into their chess statistics over 
 
 
 ## Wireframes
-<img src="https://github.com/Code-Path-Project/ChessTracker/blob/main/Wireframe_codePath-1.jpg" width=600>
+<img src="https://github.com/Code-Path-Project/ChessTracker/blob/main/Wireframe_codePath_v2.jpg" width=600>
 
 ## Schema 
 ### Models
