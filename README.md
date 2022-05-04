@@ -105,22 +105,22 @@ Model: Game
 #### List of network requests by screen 
 
 - Login Screen
-- (Read/GET) Query for specified user
+  - (Read/GET) Query for specified user
 
 - Main Screen
-- (Read/GET) Query all players sorted by rating //leaderboard
-- (Read/GET) Query all games in recentGames array //recentGame
-- (Read/GET) Query all rating from user's recentGames //data graph
+  - (Read/GET) Query all players sorted by rating //leaderboard
+  - (Read/GET) Query all games in recentGames array //recentGame
+  - (Read/GET) Query all rating from user's recentGames //data graph
 - Detail Screen
-- (Read/GET) Query all games in the player's recentGames array //recentGame
-- (Read/GET) Query all rating from the player's recentGames //data graph
+  - (Read/GET) Query all games in the player's recentGames array //recentGame
+  - (Read/GET) Query all rating from the player's recentGames //data graph
 - Setting Screen
-- (Read/GET) Query preferences on Chess.com (profileImage, username)
-- (Update/PUT) Update user's app preference (theme)
+  - (Read/GET) Query preferences on Chess.com (profileImage, username)
+  - (Update/PUT) Update user's app preference (theme)
 - FriendList Screen
-- (Create/POST) Add a new User (object) as a friend
-- (Read/GET) Query if the user exists on the site
-- (Read/GET) Query all players in friendList array
+  - (Create/POST) Add a new User (object) as a friend
+  - (Read/GET) Query if the user exists on the site
+  - (Read/GET) Query all players in friendList array
 
 #### Code Snippet for network requests 
 ```
