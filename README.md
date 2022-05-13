@@ -24,13 +24,17 @@ A chess tracker app that allows a user to look into their chess statistics over 
 - **Habit:** Most users will use the app every day or at least once a week to track their progress. 
 - **Scope:** This app could start off as a simple statistics app that looks at your past ratings compared to your friends. Perhpas, in the future, it could also include a forum of sorts where you can discuss chess with others. 
 
+## Weekly GIF Progress
+
+<img src='https://imgur.com/jY1lk9P.gif' title='Week 7' width='' alt='Video Walkthrough' />
+
 ## Product Spec
 
 ### 1. User Stories (Required and Optional)
 
 *Week 1 note: No user stories were completed in code sprint #1.* 
 
-<img src='https://imgur.com/jY1lk9P.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
 
 
 
