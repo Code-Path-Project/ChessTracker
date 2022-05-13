@@ -30,6 +30,8 @@ A chess tracker app that allows a user to look into their chess statistics over 
 
 *Week 1 note: No user stories were completed in code sprint #1.* 
 
+https://imgur.com/a/vpVrWus.gif
+
 **Required Must-have Stories**
 
 - [ ] User can log-in using their chess.com username
