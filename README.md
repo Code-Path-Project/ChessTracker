@@ -30,7 +30,7 @@ A chess tracker app that allows a user to look into their chess statistics over 
 
 *Week 1 note: No user stories were completed in code sprint #1.* 
 
-<img src=https://imgur.com/a/snMWCgK.gif width=250><br>
+<img src=https://imgur.com/a/7spsKV9.gif width=250><br>
 
 
 **Required Must-have Stories**
