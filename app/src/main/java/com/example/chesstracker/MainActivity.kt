@@ -10,7 +10,7 @@ import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
 import okhttp3.Headers
 import org.json.JSONException
 
-private const val PLAYER_GAME_HISTORY_URL = "https://api.chess.com/pub/player/erik/games"
+private const val PLAYER_GAME_HISTORY_URL = "https://api.chess.com/pub/player/erik/games/2022/05"
 const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity() {
 

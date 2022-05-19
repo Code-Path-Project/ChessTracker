@@ -4,7 +4,7 @@ import org.json.JSONArray
 
 data class Game (
     val gameUrl: String,
-    val startTime: Int,
+    val time: Int,
     val white: String,
     val Black: String
         ) {
@@ -16,9 +16,9 @@ data class Game (
                 games.add(
                     Game(
                         gameJson.getString("url"),
-                        gameJson.getInt("start_time"),
-                        gameJson.getString("white"),
-                        gameJson.getString("black")
+                        gameJson.getInt("end_time"),
+                        gameJson.getJSONObject("white"),
+                        gameJson.getJSONObject("black")
                     )
                 )
             }
