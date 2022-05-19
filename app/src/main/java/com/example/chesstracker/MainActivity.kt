@@ -1,14 +1,16 @@
 package com.example.chesstracker
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.codepath.asynchttpclient.AsyncHttpClient
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
 import okhttp3.Headers
 import org.json.JSONException
+
 
 private const val PLAYER_GAME_HISTORY_URL = "https://api.chess.com/pub/player/erik/games/2022/05"
 const val TAG = "MainActivity"
@@ -27,6 +29,12 @@ class MainActivity : AppCompatActivity() {
         rvGameHistory.adapter = gameHistoryAdapter
         rvGameHistory.layoutManager = LinearLayoutManager(this)
 
+        rvGameHistory.addItemDecoration( // Adding divider line between view
+            DividerItemDecoration(
+                rvGameHistory.getContext(),
+                DividerItemDecoration.VERTICAL
+            )
+        )
 
 
         val client = AsyncHttpClient()
