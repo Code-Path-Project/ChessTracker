@@ -18,6 +18,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val gameHistoryAdapter = GameHistoryAdapter(this, gameHistory)
+
         val client = AsyncHttpClient()
 
         client.get(PLAYER_GAME_HISTORY_URL, object : JsonHttpResponseHandler() {
