@@ -16,4 +16,10 @@
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="back4app_server_url">https://parseapi.back4app.com/</string>
+
+    <!-- Paste BOTH strings as required -->
+    <string name="back4app_app_id">P84eY9SMpdsQsYH7Q46WYsVDJy7pIY5pip6BTTBq</string>
+    <string name="back4app_client_key">d84smPKNknSAL9o5tsA6kwWDT4TgGCVtDroUj08E</string>
 </resources>
