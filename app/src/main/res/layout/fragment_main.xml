@@ -10,8 +10,9 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="83dp"
-        android:layout_height="70dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_launcher_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.021"
@@ -26,9 +27,7 @@
         android:layout_width="256dp"
         android:layout_height="154dp"
         app:egCurveSmoothness="0.4"
-        app:egIndicatorLineColor="#FE6DA8"
         app:egLegendHeight="40dp"
-        app:egShowStandardValue="true"
         app:egUseCubic="true"
         app:egUseOverlapFill="true"
         app:layout_constraintBottom_toBottomOf="parent"
