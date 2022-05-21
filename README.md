@@ -42,7 +42,7 @@ A chess tracker app that allows a user to look into their chess statistics over 
 
 **Required Must-have Stories**
 
-- [ ] User can log-in using their chess.com username
+- [x] User can log-in using their chess.com username
 - [ ] User can see a leaderboard with their friends
 - [ ] User can see their rating over time
 - [ ] User can see their chess game history and look over specific games.

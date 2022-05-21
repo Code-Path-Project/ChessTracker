@@ -1,13 +1,41 @@
 package com.example.chesstracker.Fragments
 
 import android.os.Bundle
-import androidx.preference.PreferenceFragmentCompat
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.CompoundButton
+import android.widget.Switch
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import com.example.chesstracker.R
 
-class SettingsFragment : PreferenceFragmentCompat() {
+class SettingsFragment : Fragment() {
 
+    lateinit var darkmode_switch: Switch
 
-    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-        //setPreferencesFromResource(R.xml.root_preferences, rootKey)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_settings, container, false)
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        darkmode_switch = view.findViewById<Switch>(R.id.dark_mode_switch)
+
+        darkmode_switch.setOnCheckedChangeListener({ _ , isChecked ->
+            val message = if (isChecked) "Switch1:ON" else "Switch1:OFF"
+            //Toast.makeText(this@MainActivity, message,
+              //  Toast.LENGTH_SHORT).show()
+        })
+    }
+
+
+
+    /*override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        //setPreferencesFromResource(R.xml.root_preferences, rootKey)
+    }*/
 
 }
