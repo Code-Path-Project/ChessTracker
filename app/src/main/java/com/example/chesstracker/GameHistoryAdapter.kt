@@ -4,12 +4,10 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import java.lang.Long.parseLong
 import java.sql.Date
-import java.sql.Timestamp
 import java.text.SimpleDateFormat
 
 class GameHistoryAdapter(private val context: Context, private val gameHistory: List<Game>)
@@ -37,7 +35,6 @@ class GameHistoryAdapter(private val context: Context, private val gameHistory: 
         }
     }
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        private val tv_url = itemView.findViewById<TextView>(R.id.tv_url)
         private val tv_blackUsername = itemView.findViewById<TextView>(R.id.tv_blackUsername)
         private val tv_blackResult = itemView.findViewById<TextView>(R.id.tv_blackResult)
         private val tv_whiteUsername = itemView.findViewById<TextView>(R.id.tv_whiteUsername)
@@ -46,7 +43,6 @@ class GameHistoryAdapter(private val context: Context, private val gameHistory: 
 
 
         fun bind(game: Game){
-            tv_url.text = game.gameUrl
             tv_blackUsername.text = game.blackUsername
             tv_blackResult.text = game.blackResult
             tv_whiteUsername.text = game.whiteUsername

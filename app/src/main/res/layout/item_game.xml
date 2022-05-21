@@ -7,15 +7,6 @@
     android:layout_margin="10dp">
 
     <TextView
-        android:id="@+id/tv_url"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="gameUrl"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/tv_whiteUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -23,17 +14,17 @@
         android:text="whiteUser"
         app:layout_constraintStart_toStartOf="parent"
 
-        app:layout_constraintTop_toBottomOf="@+id/tv_url" />
+        tools:layout_editor_absoluteY="39dp" />
 
     <TextView
         android:id="@+id/tv_blackUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginStart="100dp"
         android:text="blackUser"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_whiteUsername"
-        app:layout_constraintTop_toBottomOf="@+id/tv_url" />
+        tools:layout_editor_absoluteY="39dp" />
 
     <TextView
         android:id="@+id/tv_whiteResult"
@@ -64,5 +55,6 @@
         android:layout_margin="10dp"
         android:inputType="date"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/tv_blackResult"
+        app:layout_constraintStart_toEndOf="@+id/tv_whiteResult" />
 </androidx.constraintlayout.widget.ConstraintLayout>

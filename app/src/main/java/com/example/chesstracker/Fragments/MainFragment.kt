@@ -1,5 +1,6 @@
 package com.example.chesstracker.Fragments
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -40,10 +41,12 @@ class MainFragment : Fragment() {
         rvGameHistory.adapter = gameHistoryAdapter
         rvGameHistory.layoutManager = LinearLayoutManager(requireContext())
 
+
         rvGameHistory.addItemDecoration( // Adding divider line between view
             DividerItemDecoration(
                 rvGameHistory.getContext(),
                 DividerItemDecoration.VERTICAL
+
             )
         )
     ///
@@ -71,6 +74,9 @@ class MainFragment : Fragment() {
 
         })
     ///
+
+
+
     }
 
 }
