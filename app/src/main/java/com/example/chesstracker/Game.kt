@@ -5,9 +5,9 @@ import org.json.JSONArray
 data class Game (
     val gameUrl: String,
     val time: Int, //timestamp
-    val whiteUsername: String,
+    val whiteUsername: String, // May use Player class
     val whiteResult: String,
-    val blackUsername: String,
+    val blackUsername: String, //May use Player class
     val blackResult: String
         ) {
     companion object {
