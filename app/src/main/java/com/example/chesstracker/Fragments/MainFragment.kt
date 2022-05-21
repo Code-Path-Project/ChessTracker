@@ -34,6 +34,7 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+    /// gameHistory
         val gameHistoryAdapter = GameHistoryAdapter(requireContext(), gameHistory)
         rvGameHistory = view.findViewById(R.id.rv_gameHistory)
         rvGameHistory.adapter = gameHistoryAdapter
@@ -45,9 +46,10 @@ class MainFragment : Fragment() {
                 DividerItemDecoration.VERTICAL
             )
         )
+    ///
 
+    /// access chess.com api
         val client = AsyncHttpClient()
-
         client.get(PLAYER_GAME_HISTORY_URL, object : JsonHttpResponseHandler() {
             override fun onFailure(
                 statusCode: Int, headers: Headers?, response: String?, throwable: Throwable?
@@ -68,6 +70,7 @@ class MainFragment : Fragment() {
             }
 
         })
+    ///
     }
 
 }
