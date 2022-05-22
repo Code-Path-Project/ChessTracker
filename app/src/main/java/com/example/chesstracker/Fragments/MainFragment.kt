@@ -13,21 +13,24 @@ import androidx.recyclerview.widget.RecyclerView
 import com.codepath.asynchttpclient.AsyncHttpClient
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
 import com.example.chesstracker.*
+import com.parse.ParseUser
 import okhttp3.Headers
 import org.json.JSONException
-
-
-private const val PLAYER_GAME_HISTORY_URL = "https://api.chess.com/pub/player/erik/games/2022/05"
 
 class MainFragment : Fragment() {
 
     private val gameHistory = mutableListOf<Game>()
     private lateinit var rvGameHistory: RecyclerView
 
+    //Get current user
+    val username = ParseUser.getCurrentUser().username
+    private val PLAYER_GAME_HISTORY_URL = "https://api.chess.com/pub/player/$username/games/2022/05"
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        //Log.i(TAG, "$username")
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_main, container, false)
     }
@@ -41,12 +44,10 @@ class MainFragment : Fragment() {
         rvGameHistory.adapter = gameHistoryAdapter
         rvGameHistory.layoutManager = LinearLayoutManager(requireContext())
 
-
         rvGameHistory.addItemDecoration( // Adding divider line between view
             DividerItemDecoration(
                 rvGameHistory.getContext(),
                 DividerItemDecoration.VERTICAL
-
             )
         )
     ///
@@ -74,9 +75,10 @@ class MainFragment : Fragment() {
 
         })
     ///
+    }
 
-
-
+    companion object {
+        const val TAG = "MainFragment"
     }
 
 }
