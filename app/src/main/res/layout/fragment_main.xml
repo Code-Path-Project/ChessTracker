@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.MainFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="80dp"
@@ -22,17 +20,34 @@
         tools:ignore="ImageContrastCheck"
         tools:src="@tools:sample/avatars" />
 
-    <org.eazegraph.lib.charts.ValueLineChart
-        android:id="@+id/cubiclinechart"
-        android:layout_width="256dp"
-        android:layout_height="154dp"
-        app:egCurveSmoothness="0.4"
-        app:egLegendHeight="40dp"
-        app:egUseCubic="true"
-        app:egUseOverlapFill="true"
+<!--    <org.eazegraph.lib.charts.ValueLineChart-->
+<!--        android:id="@+id/cubiclinechart"-->
+<!--        android:layout_width="256dp"-->
+<!--        android:layout_height="154dp"-->
+<!--        app:egCurveSmoothness="0.4"-->
+<!--        app:egLegendHeight="40dp"-->
+<!--        app:egUseCubic="true"-->
+<!--        app:egUseOverlapFill="true"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+    <io.github.farshidroohi.LineChart
+        android:id="@+id/lineChart"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:orientation="vertical"
+        app:chart_bg_color="#FF2B4A83"
+        app:chart_line_color="#32FFFFFF"
+        app:chart_line_size="4dp"
+        app:chart_padding_bottom="20dp"
+        app:chart_padding_left="20dp"
+        app:chart_padding_right="20dp"
+        app:chart_padding_top="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rv_gameHistory" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -101,7 +116,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Rating"
-        app:layout_constraintBottom_toTopOf="@+id/cubiclinechart"
+        app:layout_constraintBottom_toTopOf="@+id/lineChart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

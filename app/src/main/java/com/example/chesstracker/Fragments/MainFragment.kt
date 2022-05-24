@@ -1,5 +1,6 @@
 package com.example.chesstracker.Fragments
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -14,10 +15,16 @@ import com.codepath.asynchttpclient.AsyncHttpClient
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
 import com.example.chesstracker.*
 import com.parse.ParseUser
+import io.github.farshidroohi.ChartEntity
+import io.github.farshidroohi.LineChart
 import okhttp3.Headers
 import org.json.JSONException
+import java.lang.Integer.max
 
 class MainFragment : Fragment() {
+    val numberOfGamesToShow = 5
+
+    lateinit var lineChart: LineChart
 
     private val gameHistory = mutableListOf<Game>()
     private lateinit var rvGameHistory: RecyclerView
@@ -37,6 +44,13 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // testing for detail activity page
+//        val i = Intent(requireContext(), DetailUserActivity::class.java)
+//        startActivity(i)
+
+        // access UI layout object
+        lineChart = view.findViewById<LineChart>(R.id.lineChart)
 
     /// gameHistory
         val gameHistoryAdapter = GameHistoryAdapter(requireContext(), gameHistory)
@@ -68,6 +82,33 @@ class MainFragment : Fragment() {
                     gameHistory.addAll(Game.fromJsonArray(gameHistoryJsonArray))
                     gameHistoryAdapter.notifyDataSetChanged()
                     Log.i(TAG, "gameHistory list: $gameHistory")
+
+                    // ratings chart
+                    var ratingsList = ArrayList<Float>()
+                    var legendVars = ArrayList<String>()
+                    val startIndex = max(0, gameHistoryJsonArray.length()-numberOfGamesToShow)
+                    for (i in gameHistoryJsonArray.length()-1 downTo startIndex) {
+                        var gameJson = gameHistoryJsonArray.getJSONObject(i)
+                        var white = gameJson.getJSONObject("white")
+                        var black = gameJson.getJSONObject("black")
+                        var player = black
+                        if (white.getString("username") == username) {
+                            // player played white
+                            player = white
+                        }
+                        var rating = player.getString("rating").toFloat()
+                        ratingsList.add(rating)
+                        legendVars.add(rating.toInt().toString())
+                    }
+                    var playerRatingData = ratingsList.toFloatArray()
+                    var firstChartEntity = ChartEntity(Color.WHITE, playerRatingData)
+
+                    var list = ArrayList<ChartEntity>().apply {
+                        add(firstChartEntity)
+                    }
+
+                    lineChart.setList(list)
+                    lineChart.setLegend(legendVars.toList())
                 }catch (e: JSONException){
                     Log.e(TAG, "Encountered exception $e")
                 }
