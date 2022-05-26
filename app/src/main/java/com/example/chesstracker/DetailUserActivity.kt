@@ -36,6 +36,8 @@ class DetailUserActivity : AppCompatActivity() {
     lateinit var lineChart: LineChart
     lateinit var rv: RecyclerView
     lateinit var btnAddFriend: Button
+    lateinit var tvPlayerRating: TextView
+    lateinit var tvYourRating: TextView
 
     lateinit var list: ArrayList<ChartEntity>
 
@@ -49,7 +51,10 @@ class DetailUserActivity : AppCompatActivity() {
         lineChart = findViewById(R.id.lineChart)
         rv = findViewById(R.id.rv)
         btnAddFriend = findViewById(R.id.btnAddFriend)
+        tvPlayerRating = findViewById(R.id.tvPlayerRating)
+        tvYourRating = findViewById(R.id.tvYourRating)
 
+        // container for graph lines
         list = ArrayList<ChartEntity>()
 
         tvUsername.text = username
@@ -142,7 +147,14 @@ class DetailUserActivity : AppCompatActivity() {
         var playerRatingData = playersRatingList.toFloatArray()
         var color = Color.WHITE
         if (num == 0) {
+            // other players ratings
             color = Color.YELLOW
+            val text = "Player's current rating: " + playersRatingList.get(playerRatingData.size-1).toInt()
+            tvPlayerRating.text = text
+        } else {
+            // user's player rating
+            val text = "Your current rating: " + playersRatingList.get(playerRatingData.size-1).toInt()
+            tvYourRating.text = text
         }
         var ChartEntity = ChartEntity(color, playerRatingData)
         list.add(ChartEntity)
