@@ -31,7 +31,7 @@ class FriendsFragment : Fragment() {
     //Gets friends list from Parse database as a String with usernames split by commas
     var allFriends : String? = ParseUser.getCurrentUser().getString("friends_list")
 
-    var allFriendsList: ArrayList<String>? = arrayListOf()
+    var allFriendsList: ArrayList<String> = arrayListOf()
 
     //var allFriendsList : List<String>? = allFriends?.split(",")
 
@@ -46,9 +46,9 @@ class FriendsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        friendsRV = view.findViewById(R.id.rv_friend_list)
+        friendsRV = view.findViewById<RecyclerView>(R.id.rv_friend_list)
 
-        adapter = FriendsAdapter(requireContext(), allFriendsList as ArrayList<String>)
+        adapter = FriendsAdapter(requireContext(), allFriendsList)
 
         friendsRV.adapter = adapter
         friendsRV.layoutManager = LinearLayoutManager(requireContext())
@@ -61,7 +61,7 @@ class FriendsFragment : Fragment() {
     fun getFriends(){
         Log.i(TAG, "$allFriends")
         //Split parse database string by , so that each item in allFriendsList is a username
-        allFriendsList = allFriends?.split(",") as ArrayList<String>?
+        allFriendsList = allFriends?.split(",") as ArrayList<String>
         Toast.makeText(requireContext(), allFriendsList?.get(0) + " " + allFriendsList?.get(1),
                         Toast.LENGTH_LONG).show()
         adapter.notifyDataSetChanged()

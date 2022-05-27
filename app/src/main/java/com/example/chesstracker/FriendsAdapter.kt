@@ -34,8 +34,8 @@ class FriendsAdapter(val context: Context, val friends: ArrayList<String>) : Rec
     }
 
     override fun onBindViewHolder(holder: FriendsAdapter.ViewHolder, position: Int) {
-        val friend = friends.get(position)
-        holder.bind(friend)
+        val friendUsername = friends[position]
+        holder.bind(friendUsername)
     }
 
     override fun getItemCount(): Int {
