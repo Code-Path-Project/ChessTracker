@@ -4,15 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CompoundButton
-import android.widget.Switch
-import android.widget.Toast
+import android.widget.Button
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
+import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
 import androidx.fragment.app.Fragment
+import com.example.chesstracker.MainActivity
 import com.example.chesstracker.R
 
-class SettingsFragment : Fragment() {
 
-    lateinit var darkmode_switch: Switch
+class SettingsFragment : Fragment()  {
+
+    lateinit var lightMode: Button
+    lateinit var darkMode: Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,14 +27,27 @@ class SettingsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        darkmode_switch = view.findViewById<Switch>(R.id.dark_mode_switch)
 
-        darkmode_switch.setOnCheckedChangeListener({ _ , isChecked ->
-            val message = if (isChecked) "Switch1:ON" else "Switch1:OFF"
-            //Toast.makeText(this@MainActivity, message,
-              //  Toast.LENGTH_SHORT).show()
-        })
+        lightMode = view.findViewById<Button>(R.id.lightMode)
+        darkMode = view.findViewById<Button>(R.id.darkMode)
+
+
+        lightMode.setOnClickListener {
+            AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO)
+        }
+
+        //lightMode.setOnClickListener()
+
+        darkMode.setOnClickListener {
+            AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_YES)
+
+        }
+
+
+
     }
+
+
 
 
 
