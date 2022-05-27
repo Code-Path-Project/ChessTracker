@@ -37,6 +37,7 @@ class SettingsFragment : Fragment() {
 
         view.findViewById<Button>(R.id.btn_logout).setOnClickListener(){
             val intent = Intent(requireContext(), LoginActivity::class.java)
+            Toast.makeText(requireContext(), "You have logged out", Toast.LENGTH_SHORT).show()
             startActivity(intent)
         }
     }
