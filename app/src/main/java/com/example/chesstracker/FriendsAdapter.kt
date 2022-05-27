@@ -9,46 +9,42 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class UserAdapter(val context: Context, val users: ArrayList<User>) : RecyclerView.Adapter<UserAdapter.ViewHolder>() {
+class FriendsAdapter(val context: Context, val friends: ArrayList<String>) : RecyclerView.Adapter<FriendsAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val tvUsername: TextView
-        //val ivImage: ImageView
-        //val tvRating : TextView
+        val ivImage: ImageView
 
         init {
             tvUsername = itemView.findViewById(R.id.tv_friend_username)
-            //ivImage = itemView.findViewById(R.id.iv_friend_image)
-            //tvRating = itemView.findViewById(R.id.tv_friend_rating)
+            ivImage = itemView.findViewById(R.id.iv_friend_image)
         }
 
-        fun bind(user: User) {
-            //tvRating.text = post.getDescription()
-            tvUsername.text = user.getUser()?.username
+        fun bind(friend: String) {
+            tvUsername.text = friend
 
             //Populate the ImageView
             //Glide.with(itemView.context).load(post.getImage()?.url).into(ivImage)
-
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FriendsAdapter.ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.friend_list_item, parent, false)
         return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: UserAdapter.ViewHolder, position: Int) {
-        val user = users.get(position)
-        holder.bind(user)
+    override fun onBindViewHolder(holder: FriendsAdapter.ViewHolder, position: Int) {
+        val friend = friends.get(position)
+        holder.bind(friend)
     }
 
     override fun getItemCount(): Int {
-        return users.size
+        return friends.size
     }
 
     // Delete everything in the RV
     fun clear() {
-        users.clear()
+        friends.clear()
         notifyDataSetChanged()
     }
 }
