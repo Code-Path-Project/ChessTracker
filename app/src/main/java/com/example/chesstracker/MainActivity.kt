@@ -1,14 +1,24 @@
 package com.example.chesstracker
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.codepath.asynchttpclient.AsyncHttpClient
+import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
 import com.example.chesstracker.Fragments.FriendsFragment
 import com.example.chesstracker.Fragments.MainFragment
 import com.example.chesstracker.Fragments.SettingsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import okhttp3.Headers
+import org.json.JSONException
+
+
+const val TAG = "MainActivity"
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         // navigation bar
         val fragmentManager: FragmentManager = supportFragmentManager
         findViewById<BottomNavigationView>(R.id.bottom_navigation).setOnItemSelectedListener {
-            item ->
+                item ->
 
             var fragmentToShow: Fragment? = null
             when(item.itemId) {

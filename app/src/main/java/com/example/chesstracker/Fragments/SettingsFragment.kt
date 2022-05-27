@@ -1,5 +1,6 @@
 package com.example.chesstracker.Fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,11 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
 import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
 import androidx.fragment.app.Fragment
+import android.widget.CompoundButton
+import android.widget.Switch
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import com.example.chesstracker.LoginActivity
 import com.example.chesstracker.MainActivity
 import com.example.chesstracker.R
 
@@ -48,6 +54,11 @@ class SettingsFragment : Fragment()  {
     }
 
 
+        view.findViewById<Button>(R.id.btn_logout).setOnClickListener(){
+            val intent = Intent(requireContext(), LoginActivity::class.java)
+            startActivity(intent)
+        }
+    }
 
 
 

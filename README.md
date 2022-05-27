@@ -26,6 +26,10 @@ A chess tracker app that allows a user to look into their chess statistics over 
 
 ## Weekly GIF Progress
 
+### Week 8
+
+<img src='chesstracker-milestone-2.gif' title='Week 8' width='' alt='Video Walkthrough' />
+
 ### Week 7
 
 <img src='https://imgur.com/jY1lk9P.gif' title='Week 7' width='' alt='Video Walkthrough' />
@@ -36,13 +40,9 @@ A chess tracker app that allows a user to look into their chess statistics over 
 
 *Week 1 note: No user stories were completed in code sprint #1.* 
 
-
-
-
-
 **Required Must-have Stories**
 
-- [ ] User can log-in using their chess.com username
+- [x] User can log-in using their chess.com username
 - [ ] User can see a leaderboard with their friends
 - [ ] User can see their rating over time
 - [ ] User can see their chess game history and look over specific games.
