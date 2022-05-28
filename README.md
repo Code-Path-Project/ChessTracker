@@ -26,7 +26,7 @@ A chess tracker app that allows a user to look into their chess statistics over 
 
 ## Weekly GIF Progress
 ### Week 9
-<img src='ChessTrackerDemo.gif' title='Week 8' width='' alt='Video Walkthrough' />
+<img src='ChessTrackerFinalDemo.gif' title='Week 8' width='' alt='Video Walkthrough' />
 
 ### Week 8
 
