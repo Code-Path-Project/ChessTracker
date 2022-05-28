@@ -25,10 +25,13 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        /*
+        //TODO: Temporarily commenting this out since logout does not work
         //This allows a currently logged in user not to have to log in again.
         if(ParseUser.getCurrentUser() != null){
             goToMainActivity()
         }
+        */
 
         findViewById<Button>(R.id.btn_login).setOnClickListener{
             val username = findViewById<EditText>(R.id.et_username).text.toString()

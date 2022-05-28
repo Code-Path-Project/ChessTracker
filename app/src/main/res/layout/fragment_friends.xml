@@ -18,9 +18,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_friend_list"
-        android:layout_width="409dp"
-        android:layout_height="689dp"
-        android:layout_margin="10dp"
+        android:layout_width="428dp"
+        android:layout_height="558dp"
+        android:layout_margin="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
