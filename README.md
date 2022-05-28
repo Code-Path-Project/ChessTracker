@@ -45,13 +45,13 @@ A chess tracker app that allows a user to look into their chess statistics over 
 **Required Must-have Stories**
 
 - [x] User can log-in using their chess.com username
-- [ ] User can see a leaderboard with their friends
 - [x] User can see their rating over time
 - [x] User can see their chess game history and look over specific games.
 
 **Optional Nice-to-have Stories**
 
 - [x] Visualisation of the data (pie charts, bar charts, line graph)
+- [ ] User can see a leaderboard with their friends
 - [ ] A "compare" feature that puts your statistics next to someone elses
 - [ ] User can create leaderboard with specific people rather than all their friends.
 - [ ] Have a leaderboard for specific regions such as San Diego, or LA.
