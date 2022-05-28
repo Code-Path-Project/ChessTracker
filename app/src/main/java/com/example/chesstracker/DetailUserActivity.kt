@@ -1,5 +1,6 @@
 package com.example.chesstracker
 
+import android.content.Context
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -43,7 +44,8 @@ class DetailUserActivity : AppCompatActivity() {
     // modified according to date in function onViewCreated
     private var PLAYER_GAME_HISTORY_URL = "https://api.chess.com/pub/player/$username/games/2022/05"
     // other user
-    val otherUser = "erik"
+
+
 
     lateinit var tvUsername: TextView
     lateinit var lineChart: LineChart
@@ -67,7 +69,7 @@ class DetailUserActivity : AppCompatActivity() {
         tvPlayerRating = findViewById(R.id.tvPlayerRating)
         tvYourRating = findViewById(R.id.tvYourRating)
 
-        tvUsername.text = username
+        tvUsername.text = otherUser
 
         // populate game history
         gameHistoryAdapter = GameHistoryAdapter(this, gameHistory)
@@ -92,8 +94,8 @@ class DetailUserActivity : AppCompatActivity() {
         // access chess.com api
         datasets = ArrayList<LineDataSet>()
         // accesss api for the two players
-        clientAccess(1, year, month)
-        clientAccess(0, year, month)
+        clientAccess(username, year, month)
+        clientAccess(otherUser, year, month)
 
         btnAddFriend.setOnClickListener {
             Toast.makeText(this, "add friend button pressed", Toast.LENGTH_SHORT).show()
@@ -101,12 +103,10 @@ class DetailUserActivity : AppCompatActivity() {
 
     }
 
-    fun clientAccess(indicator: Int, year:Int, month:Int) {
+
+    fun clientAccess(user: String, year:Int, month:Int) {
         var entries = ArrayList<Entry>()
-        var Userusername = username
-        if (indicator == 0) {
-            Userusername = otherUser
-        }
+        var Userusername = user
         if (month < 10) {
             PLAYER_GAME_HISTORY_URL =
                 "https://api.chess.com/pub/player/$Userusername/games/${year.toString()}/0${month.toString()}/"
@@ -168,17 +168,13 @@ class DetailUserActivity : AppCompatActivity() {
                         entries.add(Entry((i+counter).toFloat(), ratingsList.get(i)))
                     }
 
-                    if (indicator == 1) {
-                        // your rating
-                        val text = "Your current rating: " + ratingsList.get(ratingsList.size-1).toInt()
-                        tvYourRating.text = text
-                    } else {
-                        // other rating
-                        val text = "Player's current rating: " + ratingsList.get(ratingsList.size-1).toInt()
-                        tvPlayerRating.text = text
-                    }
+                    lateinit var text: String
+                    if (ratingsList.isEmpty()) {text = "No current rating for player: $Userusername" } // Null handling
+                    else{text = "$Userusername current rating: " + ratingsList.get(ratingsList.size-1).toInt()}
+                    if (username == Userusername) { tvYourRating.text = text }
+                    else {tvPlayerRating.text = text }
 
-                    displayDataSet(entries, indicator)
+                    displayDataSet(entries, Userusername)
 
                 } catch (e: JSONException) {
                     Log.e(MainFragment.TAG, "Encountered exception $e")
@@ -187,12 +183,10 @@ class DetailUserActivity : AppCompatActivity() {
         })
     }
 
-    fun displayDataSet(entries:ArrayList<Entry>, indicator: Int) {
+    fun displayDataSet(entries:ArrayList<Entry>, user: String) {
         Log.i(TAG, "entries display: $entries")
-        var textt = "Your Rating"
-        if (indicator == 0) {
-            textt = "Player's Rating"
-        }
+        var textt = "Player: $user's Rating"
+
         val dataSet = LineDataSet(entries, textt)
 
         dataSet.setColor(Color.RED)
@@ -207,5 +201,7 @@ class DetailUserActivity : AppCompatActivity() {
 
     companion object {
         const val TAG = "DetailAcitivty"
+        lateinit var otherUser: String
+        fun setUser(otherUsername: String) { otherUser = otherUsername }
     }
 }

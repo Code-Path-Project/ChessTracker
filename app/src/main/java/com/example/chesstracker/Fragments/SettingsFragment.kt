@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment
 import android.widget.CompoundButton
 import android.widget.Switch
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import com.example.chesstracker.LoginActivity
 import com.example.chesstracker.MainActivity
 import com.example.chesstracker.R
@@ -48,23 +47,16 @@ class SettingsFragment : Fragment()  {
             AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_YES)
 
         }
-
-
-
-    }
-
-
         view.findViewById<Button>(R.id.btn_logout).setOnClickListener(){
             val intent = Intent(requireContext(), LoginActivity::class.java)
             Toast.makeText(requireContext(), "You have logged out", Toast.LENGTH_SHORT).show()
             startActivity(intent)
+
         }
     }
 
-
+    }
 
     /*override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         //setPreferencesFromResource(R.xml.root_preferences, rootKey)
     }*/
-
-}
