@@ -40,7 +40,9 @@ A chess tracker app that allows a user to look into their chess statistics over 
 
 ### 1. User Stories (Required and Optional)
 
-*Week 1 note: No user stories were completed in code sprint #1.* 
+*Week 7 note: No user stories were completed in code sprint #1.* 
+*Week 8 note: Basic fragments were put in place in code spring #2.*
+*Week 9 note: Users can now log in and log out, look at a graph of their recent ratings, see a list of friends, change themes, and see game history.*
 
 **Required Must-have Stories**
 
