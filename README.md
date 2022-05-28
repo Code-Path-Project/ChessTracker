@@ -54,7 +54,7 @@ A chess tracker app that allows a user to look into their chess statistics over 
 - [ ] User can create leaderboard with specific people rather than all their friends.
 - [ ] Have a leaderboard for specific regions such as San Diego, or LA.
 - [ ] Have a forum for discussion
-- [ ] User can logout and change preferences
+- [x] User can logout and change preferences
 - [ ] User can search for other users from chess.com
 
 ### 2. Screen Archetypes
