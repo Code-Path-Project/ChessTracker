@@ -1,6 +1,7 @@
 package com.example.chesstracker
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.chesstracker.Fragments.MainFragment
 import com.codepath.asynchttpclient.AsyncHttpClient
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
+import com.example.chesstracker.Fragments.FriendsFragment
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
@@ -40,17 +42,16 @@ class DetailUserActivity : AppCompatActivity() {
     lateinit var datasets: ArrayList<LineDataSet>
 
     //Get current user
+    val user = ParseUser.getCurrentUser()
     val username = ParseUser.getCurrentUser().username
     // modified according to date in function onViewCreated
     private var PLAYER_GAME_HISTORY_URL = "https://api.chess.com/pub/player/$username/games/2022/05"
-    // other user
-
-
 
     lateinit var tvUsername: TextView
     lateinit var lineChart: LineChart
 
     lateinit var rv: RecyclerView
+    lateinit var btn_goMain: Button
     lateinit var btnAddFriend: Button
     lateinit var tvPlayerRating: TextView
     lateinit var tvYourRating: TextView
@@ -83,6 +84,8 @@ class DetailUserActivity : AppCompatActivity() {
             )
         )
 
+
+
         // get current date
         val dateFormatMonth = SimpleDateFormat("MM")
         val date = Date()
@@ -97,9 +100,31 @@ class DetailUserActivity : AppCompatActivity() {
         clientAccess(username, year, month)
         clientAccess(otherUser, year, month)
 
+        // addFriend button
         btnAddFriend.setOnClickListener {
-            Toast.makeText(this, "add friend button pressed", Toast.LENGTH_SHORT).show()
+            val allFriends = ParseUser.getCurrentUser().getString("friends_list")
+            val allFriendsList = allFriends?.split(",")
+            Log.i("current Friendlist", allFriendsList.toString())
+            if (!allFriendsList.isNullOrEmpty() && allFriendsList.contains(otherUser)) {
+                Toast.makeText(this,
+                    "Player: $otherUser is already in your friend list", Toast.LENGTH_SHORT).show()
+            }else{
+                var newFriends: String
+                if (allFriends.isNullOrBlank()) { newFriends = otherUser}
+                else{ newFriends = allFriends + "," + otherUser }
+                    user.put("friends_list", newFriends)
+                user.saveInBackground()
+
+                Toast.makeText(this,
+                    "Player: $otherUser added to your friends list", Toast.LENGTH_SHORT).show()
+            }
         }
+        btn_goMain = findViewById(R.id.btn_goMain)
+        btn_goMain.setOnClickListener {
+            intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
 
     }
 
