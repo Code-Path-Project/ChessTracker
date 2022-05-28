@@ -60,11 +60,20 @@ class FriendsFragment : Fragment() {
 
     fun getFriends(){
         Log.i(TAG, "$allFriends")
-        //Split parse database string by , so that each item in allFriendsList is a username
-        allFriendsList = allFriends?.split(",") as ArrayList<String>
-        Toast.makeText(requireContext(), allFriendsList?.get(0) + " " + allFriendsList?.get(1),
-                        Toast.LENGTH_LONG).show()
-        adapter.notifyDataSetChanged()
+
+        if(allFriends?.length == 0){
+            return
+        } else if(allFriends == null) {
+            return
+        } else {
+            //Split parse database string by , so that each item in allFriendsList is a username
+            allFriendsList.addAll(allFriends?.split(",") as ArrayList<String>)
+            Toast.makeText(
+                requireContext(), allFriendsList?.get(0) + " " + allFriendsList?.get(1),
+                Toast.LENGTH_LONG
+            ).show()
+            adapter.notifyDataSetChanged()
+        }
     }
 
     companion object {
