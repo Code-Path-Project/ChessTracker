@@ -7,8 +7,22 @@
     tools:context=".Fragments.FriendsFragment">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="friends fragment" />
+        android:id="@+id/tv_friend_list_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chess.com Friend List"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_friend_list"
+        android:layout_width="409dp"
+        android:layout_height="689dp"
+        android:layout_margin="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_friend_list_title" />
 </androidx.constraintlayout.widget.ConstraintLayout>

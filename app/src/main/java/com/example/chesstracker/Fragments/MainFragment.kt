@@ -7,6 +7,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -47,6 +49,8 @@ class MainFragment : Fragment() {
     private lateinit var rvGameHistory: RecyclerView
     lateinit var gameHistoryAdapter: GameHistoryAdapter
 
+    private lateinit var searchBar: SearchView
+
     //Get current user
     val username = ParseUser.getCurrentUser().username
     // modified according to date in function onViewCreated
@@ -70,6 +74,40 @@ class MainFragment : Fragment() {
 
         // access UI layout object
         lineChart = view.findViewById(R.id.lineChart)
+
+        //searchBar
+        searchBar = view.findViewById(R.id.sv_searchBar)
+        searchBar.setSubmitButtonEnabled(true)
+        searchBar.setIconifiedByDefault(false)
+
+        fun checkChessAPI(username: String){
+
+        }
+
+        searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(typedName: String): Boolean {
+
+                //verify if username is valid
+                val client = AsyncHttpClient()
+                client.get("https://api.chess.com/pub/player/$typedName", object: JsonHttpResponseHandler() {
+                    override fun onFailure(statusCode: Int, headers: Headers?, response: String?, throwable: Throwable?
+                    ) {//If the api call fails / the username does not exist in chess.com
+                        Toast.makeText(requireContext(), "User: $typedName does not exist", Toast.LENGTH_SHORT).show()
+                    }
+                    override fun onSuccess(statusCode: Int, headers: Headers?, json: JSON) { //Player found
+                        DetailUserActivity.setUser(typedName)
+                        val intent = Intent(requireContext(), DetailUserActivity::class.java)
+                        startActivity(intent)
+                    }
+                })
+                return true
+            }
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return true
+            }
+
+        })
+        //End searchBar
 
     /// gameHistory
         gameHistoryAdapter = GameHistoryAdapter(requireContext(), gameHistory)
