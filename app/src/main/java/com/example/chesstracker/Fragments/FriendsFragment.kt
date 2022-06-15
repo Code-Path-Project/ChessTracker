@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Adapter
 import android.widget.Toast
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chesstracker.FriendsAdapter
@@ -33,7 +34,6 @@ class FriendsFragment : Fragment() {
 
     var allFriendsList: ArrayList<String> = arrayListOf()
 
-    //var allFriendsList : List<String>? = allFriends?.split(",")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,6 +53,12 @@ class FriendsFragment : Fragment() {
         friendsRV.adapter = adapter
         friendsRV.layoutManager = LinearLayoutManager(requireContext())
 
+        friendsRV.addItemDecoration( // Adding divider line between view
+            DividerItemDecoration(
+                friendsRV.getContext(),
+                DividerItemDecoration.VERTICAL)
+        )
+
         Log.i(TAG, "Before getFriends")
         getFriends()
         Log.i(TAG, "After getFriends")
@@ -61,22 +67,21 @@ class FriendsFragment : Fragment() {
     fun getFriends(){
         Log.i(TAG, "$allFriends")
 
-        if(allFriends?.length == 0){
-            return
-        } else if(allFriends == null) {
-            return
+        if(allFriends.isNullOrBlank()){ return
         } else {
             //Split parse database string by , so that each item in allFriendsList is a username
-            allFriendsList.addAll(allFriends?.split(",") as ArrayList<String>)
-            Toast.makeText(
-                requireContext(), allFriendsList?.get(0) + " " + allFriendsList?.get(1),
-                Toast.LENGTH_LONG
-            ).show()
+            if (!(allFriends!!.contains(","))) {allFriendsList.add(allFriends!!)}
+            else {
+                allFriendsList.addAll(allFriends?.split(",") as ArrayList<String>)
+            }
+
             adapter.notifyDataSetChanged()
         }
     }
 
     companion object {
         const val TAG = "FriendsFragment"
+
+
     }
 }
